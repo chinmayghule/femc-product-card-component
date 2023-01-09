@@ -1,0 +1,1 @@
+This is the solution to the Front End Mentor's "Product Preview Card Component" challenge.
