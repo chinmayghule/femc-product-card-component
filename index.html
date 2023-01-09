@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="./images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Product preview card component</title>
+
+    <!-- My fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        /* add styles here. */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        img,
+        p {
+            margin: 0px;
+        }
+
+        :root {
+            /*** COLORS ***/
+            --primary-dark: hsl(158, 36%, 37%);
+            /* dark cyan */
+            --primary-light: hsl(30, 38%, 92%);
+            /* cream */
+
+            --neutral-dark-01: hsl(212, 21%, 14%);
+            /* very dark blue */
+            --neutral-dark-02: hsl(228, 12%, 48%);
+            /* dark grayish blue */
+            --neutral-light: hsl(0, 0%, 100%);
+            /* white */
+
+            /*** SPACE ***/
+            --space-s: clamp(1.00rem, calc(0.93rem + 0.36vw), 1.25rem);
+            --space-m: clamp(1.50rem, calc(1.39rem + 0.54vw), 1.88rem);
+
+            /*** FONTS ***/
+            --step-0: clamp(1.00rem, calc(0.93rem + 0.36vw), 1.25rem);
+            --step-4: clamp(1.80rem, calc(1.67rem + 0.64vw), 2.25rem);
+
+            --montserrat: "Montserrat", sans-serif;
+            --fraunces: "Fraunces", serif;
+
+        }
+
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            min-height: 100vh;
+            height: 100vh;
+
+            background-color: var(--primary-light);
+
+        }
+
+        .container {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100%;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: clamp(240px, 75vw, 360px);
+
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        picture>img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 0px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-s);
+
+            padding: var(--space-s);
+            background-color: var(--neutral-light);
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: var(--space-s);
+
+            margin-block-start: auto;
+        }
+
+        .card-info>button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-s);
+
+            width: 100%;
+
+            padding-block: var(--space-s);
+            margin-block-end: 0px;
+
+            border: none;
+            outline: none;
+            border-radius: 0.5rem;
+
+            background-color: var(--primary-dark);
+            color: var(--neutral-light);
+
+            font-weight: bold;
+        }
+
+        .card-info > button:hover {
+            background-color: var(--neutral-dark-01);
+            cursor: pointer;
+        }
+
+        .title,
+        .discount-price {
+            font-family: var(--fraunces);
+            font-size: var(--step-4);
+        }
+
+        .type,
+        .description,
+        .original-price,
+        .card-info>button {
+            font-family: var(--montserrat);
+            font-size: var(--step-0);
+        }
+
+        .type {
+            letter-spacing: 0.25rem;
+            color: var(--neutral-dark-02);
+        }
+
+        .title {
+            font-size: 2rem;
+            color: var(--neutral-dark-01);
+        }
+
+        .description {
+            line-height: 1.5;
+            color: var(--neutral-dark-02);
+        }
+
+        .discount-price {
+            font-size: 2rem;
+            color: hsl(158, 36%, 37%);
+        }
+
+        .original-price {
+            color: var(--neutral-dark-02);
+        }
+
+
+
+
+        @media screen and (min-width: 700px) {
+            .card {
+                grid-template-columns: 1fr 1fr;
+
+                width: clamp(240px, 75vw, 600px);
+
+
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            .container {
+                margin-inline: 1rem;
+            }
+            
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="img-container">
+                <picture>
+                    <source media="(min-width: 700px)"
+                        srcset="images/image-product-desktop.jpg">
+                    <source media="(max-width: 700px)"
+                        srcset="images/image-product-mobile.jpg">
+                    <img src="images/image-product-mobile.jpg"
+                        alt="Perfume surrounding by leaves.">
+                </picture>
+            </div>
+            <div class="card-info">
+                <div class="type">PERFUME</div>
+                <div class="title">Gabrielle Essence Eau De Parfum</div>
+                <p class="description">
+                    A floral, solar and voluptuous
+                    interpretation composed by Olivier Polge,
+                    Perfumer-Creator for the House of CHANEL.
+                </p>
+                <div class="price">
+                    <span class="discount-price">$149.99</span>
+                    <span class="original-price"><s>$169.99</s></span>
+                </div>
+                <button>
+                    <img src="images/icon-cart.svg" alt="">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
